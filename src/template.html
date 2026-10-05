@@ -1,0 +1,1103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bold Claim</title>
+<meta name="description" content="Every one of the 1,950 type families on Google Fonts, measured off its own outlines. font-weight:700 turns out not to be a quantity: pick a bold and a regular from two different families and one time in eight the bold is the lighter of the two.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ------------------------------------------------------------------ *
+ * A type specimen book: stark paper, hairline rules, and one          *
+ * vermilion that only ever means "this is the thing being measured".  *
+ * Grey is a regular, black is a bold, red is the measurement itself.  *
+ * ------------------------------------------------------------------ */
+:root{
+  --paper:#faf9f6;
+  --panel:#ffffff;
+  --sunk:#f0ede7;
+  --ink:#141312;
+  --ink2:#57534c;
+  --ink3:#908b81;
+  --rule:#d6d1c7;
+  --rule2:#e9e5dc;
+  --mark:#bf3b16;        /* the scanline, the finding, the outlier */
+  --reg:#9b958a;         /* a regular */
+  --bold:#141312;        /* a bold */
+  color-scheme:light dark;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --paper:#121110;
+  --panel:#1a1917;
+  --sunk:#0b0b0a;
+  --ink:#ece9e3;
+  --ink2:#a6a098;
+  --ink3:#746f66;
+  --rule:#302e2a;
+  --rule2:#232220;
+  --mark:#f1724a;
+  --reg:#6d675f;
+  --bold:#ece9e3;
+}}
+:root[data-theme="dark"]{
+  --paper:#121110; --panel:#1a1917; --sunk:#0b0b0a;
+  --ink:#ece9e3; --ink2:#a6a098; --ink3:#746f66;
+  --rule:#302e2a; --rule2:#232220;
+  --mark:#f1724a; --reg:#6d675f; --bold:#ece9e3;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font:400 16.5px/1.62 "Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased;
+  font-variant-numeric:tabular-nums lining-nums;
+}
+.wrap{max-width:1180px;margin-left:auto;margin-right:auto;padding:0 16px}
+@media(min-width:700px){.wrap{padding:0 30px}}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.03em;line-height:1.02;text-wrap:balance}
+h1{font-size:clamp(3rem,13vw,7.6rem)}
+h2{font-size:clamp(1.65rem,5vw,2.85rem)}
+h3{font-size:1.08rem;font-weight:600;letter-spacing:-.01em}
+p{margin:0 0 1.05em;max-width:66ch}
+a{color:var(--mark)}
+:focus-visible{outline:2px solid var(--mark);outline-offset:2px}
+.mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ink3);margin:0 0 22px}
+.num{font-family:"IBM Plex Mono",monospace;font-weight:600;font-variant-numeric:tabular-nums}
+.mk{color:var(--mark)}
+b{font-weight:500;color:var(--ink)}
+
+/* ---- masthead ---- */
+header.mast{padding-top:54px}
+.dek{font-size:19px;color:var(--ink2);max-width:62ch;margin-top:26px}
+.dek b{color:var(--ink);font-weight:500}
+.strip{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:40px 0 0}
+@media(min-width:880px){.strip{grid-template-columns:repeat(4,1fr)}}
+.strip>div{background:var(--paper);padding:17px 18px 19px}
+.strip .v{font-size:30px;font-weight:700;letter-spacing:-.035em;line-height:1.05}
+.strip .k{font-size:12.5px;color:var(--ink2);margin-top:5px;line-height:1.42;max-width:32ch}
+
+section{margin-top:78px}
+.sechead{border-top:2px solid var(--ink);padding-top:14px}
+.sublede{color:var(--ink2);max-width:68ch;margin-top:12px}
+.note{font-size:13.5px;color:var(--ink2);border-left:2px solid var(--rule);
+  padding-left:13px;max-width:76ch;margin-top:18px}
+.note.warn{border-left-color:var(--mark)}
+
+/* ---- glyph specimens ---- */
+svg.g{display:block;overflow:visible}
+svg.g path.ink{fill:var(--ink);stroke:none}
+svg.g path.ink.reg{fill:var(--reg)}
+svg.g .scan{stroke:var(--mark);stroke-width:3;fill:none;opacity:.55;stroke-dasharray:14 10}
+svg.g .span{stroke:var(--mark);stroke-width:14;fill:none;stroke-linecap:butt}
+svg.g .base{stroke:var(--rule);stroke-width:2.5;fill:none}
+svg.g .glabel{font-family:"IBM Plex Mono",monospace;font-size:46px;fill:var(--mark);font-weight:600}
+svg.g .gdim{font-family:"IBM Plex Mono",monospace;font-size:40px;fill:var(--ink3)}
+
+/* ---- the measuring bench ---- */
+.bench{margin-top:26px;display:grid;gap:18px}
+@media(min-width:900px){.bench{grid-template-columns:minmax(0,1fr) 300px;align-items:start}}
+.benchfig{background:var(--panel);border:1px solid var(--rule);padding:14px}
+.benchfig .pair{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.benchfig svg{width:100%;height:auto}
+.picker{display:grid;gap:10px}
+.picker input{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--rule);
+  background:var(--panel);color:var(--ink);border-radius:2px}
+.wts{display:flex;flex-wrap:wrap;gap:4px}
+.wts button{appearance:none;border:1px solid var(--rule);background:var(--panel);color:var(--ink2);
+  font:600 12px/1 "IBM Plex Mono",monospace;padding:7px 8px;cursor:pointer;border-radius:2px}
+.wts button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.readout{border:1px solid var(--rule);background:var(--panel)}
+.readout div{display:flex;justify-content:space-between;gap:10px;padding:7px 11px;
+  font-size:13px;border-top:1px solid var(--rule2)}
+.readout div:first-child{border-top:0}
+.readout .rk{color:var(--ink2)}
+.readout .rv{font-family:"IBM Plex Mono",monospace;font-weight:600}
+.readout div.hi .rv{color:var(--mark)}
+.fname{font-weight:500;font-size:15px}
+.fmeta{font-size:12px;color:var(--ink3);margin-top:2px;line-height:1.4}
+
+/* ---- the two distributions ---- */
+.dist{margin-top:26px;background:var(--panel);border:1px solid var(--rule);padding:16px 14px 10px}
+.dist svg{width:100%;height:auto;display:block}
+.dist .axis{stroke:var(--rule);stroke-width:1}
+.dist .tick{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:var(--ink3)}
+.dist .barr{fill:var(--reg)}
+.dist .barb{fill:var(--bold)}
+.dist .lap{fill:var(--mark);opacity:.07}
+.dist .lapline{stroke:var(--mark);stroke-width:1;stroke-dasharray:3 3}
+.dist .lab{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600}
+.anchors{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:20px;
+  grid-template-columns:repeat(2,1fr)}
+@media(min-width:760px){.anchors{grid-template-columns:repeat(5,1fr)}}
+.anchors>div{background:var(--panel);padding:12px}
+.anchors svg{width:100%;height:58px}
+.anchors .an{font-size:12.5px;font-weight:500;margin-top:8px;line-height:1.3}
+.anchors .av{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--mark);font-weight:600}
+.anchors .aw{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink3)}
+
+/* ---- tables ---- */
+table{width:100%;border-collapse:collapse;margin-top:22px;font-size:14px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule2)}
+th{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink3);border-bottom:1px solid var(--rule);font-weight:500}
+td.r,th.r{text-align:right;font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+tbody tr:hover{background:var(--sunk)}
+td .sw{display:inline-block;vertical-align:middle;width:30px;height:26px}
+.scroller{overflow-x:auto}
+
+/* ---- the swap ---- */
+.swap{margin-top:26px;border:1px solid var(--rule);background:var(--panel)}
+.swapctl{display:grid;gap:12px;padding:16px;border-bottom:1px solid var(--rule)}
+@media(min-width:800px){.swapctl{grid-template-columns:1fr 1fr auto;align-items:end}}
+.swapctl label{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  letter-spacing:.11em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px}
+.swapctl input{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--rule);
+  background:var(--paper);color:var(--ink);border-radius:2px}
+.swapbody{display:grid;grid-template-columns:1fr 1fr}
+@media(max-width:560px){
+  .swapbody{grid-template-columns:1fr}
+  .swapbody>div+div{border-left:0;border-top:1px solid var(--rule)}
+  .benchfig .pair{grid-template-columns:1fr}
+}
+.swapbody>div{padding:16px;min-width:0}
+.swapbody>div+div{border-left:1px solid var(--rule)}
+.swapbody svg{width:100%;height:150px}
+.verdict{padding:16px;border-top:1px solid var(--rule);background:var(--sunk);font-size:15px}
+.verdict .big{font-size:26px;font-weight:700;letter-spacing:-.03em;display:block;margin-bottom:4px}
+
+/* ---- bars ---- */
+.bars{margin-top:22px;display:grid;gap:7px}
+.barrow{display:grid;grid-template-columns:150px 1fr 74px;gap:10px;align-items:center;font-size:13.5px}
+.barrow .track{height:17px;background:var(--sunk);position:relative}
+.barrow .fill{position:absolute;inset:0 auto 0 0;background:var(--ink)}
+.barrow .fill.alt{background:var(--mark)}
+.barrow .bv{font-family:"IBM Plex Mono",monospace;font-size:12px;text-align:right;color:var(--ink2)}
+@media(max-width:600px){.barrow{grid-template-columns:110px 1fr 62px;font-size:12.5px}}
+
+/* ---- faux bold ---- */
+.faux{margin-top:24px;display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+@media(min-width:740px){.faux{grid-template-columns:repeat(3,1fr)}}
+.faux>div{background:var(--panel);padding:16px}
+.faux svg{width:100%;height:170px}
+.faux .fh{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink3)}
+.faux .fd{font-size:13px;color:var(--ink2);margin-top:8px;line-height:1.45}
+svg.g path.faux1{fill:none;stroke:var(--mark);stroke-opacity:.9}
+svg.g path.ghost{fill:var(--ink);opacity:.17}
+
+/* ---- buckets ---- */
+.bk{margin-top:22px;display:grid;gap:4px}
+.bkrow{display:grid;grid-template-columns:74px 1fr;gap:10px;align-items:center;font-size:12.5px}
+.bkrow .bt{font-family:"IBM Plex Mono",monospace;color:var(--ink2)}
+.bkrow .line{position:relative;height:24px}
+.bkrow .rng{position:absolute;top:10px;height:4px;background:var(--rule);border-radius:2px}
+.bkrow .med{position:absolute;top:4px;width:3px;height:16px;background:var(--ink)}
+.bkrow .ol{position:absolute;top:7px;width:9px;height:9px;border-radius:50%;
+  background:var(--mark);transform:translateX(-4px)}
+.bkaxis{display:flex;justify-content:space-between;font-family:"IBM Plex Mono",monospace;
+  font-size:10px;color:var(--ink3);margin-left:84px;margin-top:4px}
+
+/* ---- scatter ---- */
+.scat{margin-top:24px;background:var(--panel);border:1px solid var(--rule);padding:14px;position:relative}
+.scat svg{width:100%;height:auto;display:block}
+.scat circle{fill-opacity:.5;stroke:none}
+.scat .ax{stroke:var(--rule);stroke-width:1}
+.scat .axl{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:var(--ink3)}
+.legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px;font-size:12.5px;color:var(--ink2)}
+.legend span.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--paper);
+  font-family:"IBM Plex Mono",monospace;font-size:11px;padding:5px 8px;border-radius:2px;
+  opacity:0;transition:opacity .1s;white-space:nowrap;z-index:3}
+
+/* ---- years ---- */
+.years{margin-top:22px;background:var(--panel);border:1px solid var(--rule);padding:16px 14px}
+.years svg{width:100%;height:auto;display:block}
+.years .ln{fill:none;stroke:var(--ink);stroke-width:2}
+.years .ln2{fill:none;stroke:var(--mark);stroke-width:2;stroke-dasharray:5 4}
+.years .band{fill:var(--sunk)}
+
+/* ---- the shelf ---- */
+.shelfctl{margin-top:24px;display:grid;gap:10px}
+@media(min-width:820px){.shelfctl{grid-template-columns:minmax(0,1fr) auto auto auto;align-items:center}}
+.shelfctl input,.shelfctl select{font:inherit;padding:10px 12px;border:1px solid var(--rule);
+  background:var(--panel);color:var(--ink);border-radius:2px}
+.count{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink3);margin-top:10px}
+.shelf{margin-top:14px;display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+@media(min-width:620px){.shelf{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:960px){.shelf{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--panel);padding:14px;min-width:0}
+.card .cn{font-weight:500;font-size:15px;line-height:1.2}
+.card .cm{font-size:11.5px;color:var(--ink3);margin-top:3px;line-height:1.4}
+.card .ramp{display:flex;gap:3px;align-items:flex-end;margin-top:11px;overflow:hidden}
+.card .ramp>div{flex:1 1 0;min-width:0;text-align:center}
+.card .ramp svg{width:100%;height:42px}
+.card .ramp .rw{font-family:"IBM Plex Mono",monospace;font-size:9px;color:var(--ink3);margin-top:3px}
+.card .ramp .rv{font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600}
+.card .one{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--mark);margin-top:9px;
+  letter-spacing:.06em;text-transform:uppercase}
+.card button.pick{appearance:none;border:1px solid var(--rule);background:transparent;color:var(--ink2);
+  font:500 11px/1 "Space Grotesk",sans-serif;padding:6px 8px;margin-top:10px;cursor:pointer;border-radius:2px}
+.card button.pick:hover{background:var(--sunk);color:var(--ink)}
+.more{margin-top:16px;text-align:center}
+.more button{appearance:none;border:1px solid var(--rule);background:var(--panel);color:var(--ink);
+  font:500 14px/1 "Space Grotesk",sans-serif;padding:12px 22px;cursor:pointer;border-radius:2px}
+
+#method h3{margin:32px 0 10px}
+footer{margin:86px 0 0;border-top:2px solid var(--ink);padding:20px 0 70px;
+  font-size:13.5px;color:var(--ink2)}
+footer p{max-width:78ch}
+footer h3{margin-bottom:8px}
+footer ul{padding-left:18px;margin:0 0 1em}
+footer li{margin-bottom:5px}
+.loading{padding:60px 0;color:var(--ink3);font-family:"IBM Plex Mono",monospace;font-size:13px}
+</style>
+</head>
+<body>
+
+<header class="mast wrap">
+  <p class="kicker">Quick Projects</p>
+  <h1>Bold&nbsp;Claim</h1>
+  <p class="dek" id="dek"></p>
+  <div class="strip" id="strip"></div>
+</header>
+
+<section class="wrap" id="bench-sec">
+  <div class="sechead"><h2>What a measurement looks like</h2></div>
+  <p class="sublede">Nothing here reads a font's own declared metrics. A horizontal line is laid
+  across the bowl of the <span class="mono">o</span> at its own mid height and the ink it crosses is
+  measured; a vertical line through the middle of the same bowl gives the thin stroke. Cap height is
+  the top of the <span class="mono">H</span>, x-height the top of the <span class="mono">x</span>.
+  Every number is in units of a 1000-unit em, so a font drawn on a 2048-unit grid and one drawn on a
+  1000-unit grid can be compared directly. Pick any family below and the page draws the lines it was
+  actually measured on.</p>
+  <div class="bench">
+    <div class="benchfig">
+      <div class="pair">
+        <svg class="g" id="figo" viewBox="-60 -860 860 1080" aria-label="the letter o with its measuring lines"></svg>
+        <svg class="g" id="fign" viewBox="-60 -860 860 1080" aria-label="the letter n with its stem measured"></svg>
+      </div>
+    </div>
+    <div class="picker">
+      <input id="benchpick" list="famlist" placeholder="Search 1,950 families" autocomplete="off" aria-label="choose a family to measure">
+      <div class="wts" id="benchwts"></div>
+      <div>
+        <div class="fname" id="benchname"></div>
+        <div class="fmeta" id="benchmeta"></div>
+      </div>
+      <div class="readout" id="benchread"></div>
+    </div>
+  </div>
+  <p class="note" id="benchnote"></p>
+</section>
+
+<section class="wrap">
+  <div class="sechead"><h2>Regular and bold, as drawn</h2></div>
+  <p class="sublede" id="distlede"></p>
+  <div class="dist"><svg id="distsvg" viewBox="0 0 1000 300" aria-label="the distribution of measured stroke weight at 400 above the axis and at 700 below it"></svg></div>
+  <div class="anchors" id="anchors"></div>
+  <p class="sublede" id="crosslede"></p>
+  <div class="scroller"><table id="crosstab">
+    <thead><tr><th>This family's bold</th><th class="r">stroke</th><th>is lighter than this family's regular</th><th class="r">stroke</th></tr></thead>
+    <tbody></tbody></table></div>
+  <p class="note" id="crossnote"></p>
+</section>
+
+<section class="wrap">
+  <div class="sechead"><h2>The swap</h2></div>
+  <p class="sublede">Two families, the same number in your stylesheet. The letters are drawn at the
+  same em size, from the outlines in this page, so what you see is the real difference between the
+  two faces at that nominal weight.</p>
+  <div class="swap">
+    <div class="swapctl">
+      <div><label for="swapa">Leaving</label><input id="swapa" list="famlist" autocomplete="off"></div>
+      <div><label for="swapb">Arriving at</label><input id="swapb" list="famlist" autocomplete="off"></div>
+      <div class="wts" id="swapwts"></div>
+    </div>
+    <div class="swapbody">
+      <div id="swapA"></div>
+      <div id="swapB"></div>
+    </div>
+    <div class="verdict" id="swapv"></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="sechead"><h2>Your own bold is not a constant either</h2></div>
+  <p class="sublede" id="jumplede"></p>
+  <div class="dist"><svg id="jumpsvg" viewBox="0 0 1000 220" aria-label="how much stroke weight a family adds between its 400 and its 700"></svg></div>
+  <div class="scroller"><table id="poptab">
+    <thead><tr><th>Family</th><th>Category</th><th class="r">weights</th><th class="r">400</th><th class="r">700</th><th class="r">bold step</th></tr></thead>
+    <tbody></tbody></table></div>
+  <p class="note" id="popnote"></p>
+</section>
+
+<section class="wrap">
+  <div class="sechead"><h2>Half the shelf has one weight</h2></div>
+  <p class="sublede" id="onelede"></p>
+  <div class="bars" id="onebars"></div>
+  <h3 style="margin-top:34px">What the browser does instead</h3>
+  <p class="sublede" id="fauxlede"></p>
+  <div class="faux" id="faux"></div>
+  <p class="note warn" id="fauxnote"></p>
+</section>
+
+<section class="wrap">
+  <div class="sechead"><h2>The catalogue's own label</h2></div>
+  <p class="sublede" id="bklede"></p>
+  <div class="bk" id="bk"></div>
+  <div class="bkaxis"><span>0</span><span>measured stroke, units per 1000 em</span><span id="bkmax">500</span></div>
+  <p class="note" id="bknote"></p>
+</section>
+
+<section class="wrap">
+  <div class="sechead"><h2>Weight is not the only axis</h2></div>
+  <p class="sublede" id="scatlede"></p>
+  <div class="scat" id="scat">
+    <svg id="scatsvg" viewBox="0 0 1000 480" aria-label="measured stroke weight against stroke contrast, one point per family"></svg>
+    <div class="tip" id="scattip"></div>
+  </div>
+  <div class="legend" id="scatleg"></div>
+  <p class="note" id="scatnote"></p>
+</section>
+
+<section class="wrap">
+  <div class="sechead"><h2>Sixteen years, and nothing moved</h2></div>
+  <p class="sublede" id="yearlede"></p>
+  <div class="years"><svg id="yearsvg" viewBox="0 0 1000 240" aria-label="median stroke weight and x-height ratio by the year a family joined the catalogue"></svg></div>
+  <p class="note" id="yearnote"></p>
+</section>
+
+<section class="wrap">
+  <div class="sechead"><h2>All of it</h2></div>
+  <p class="sublede">Every family, every upright weight it ships, drawn from its own outlines. The
+  number under each letter is its measured stroke. Sort by it and the catalogue arranges itself from
+  hairline to slab.</p>
+  <div class="shelfctl">
+    <input id="q" placeholder="Search a family, a designer" autocomplete="off" aria-label="search families">
+    <select id="fcat" aria-label="filter by category"></select>
+    <select id="fw" aria-label="filter by number of weights">
+      <option value="">any number of weights</option>
+      <option value="1">one weight only</option>
+      <option value="m">more than one</option>
+      <option value="v">variable weight axis</option>
+    </select>
+    <select id="sort" aria-label="sort">
+      <option value="pop">most used first</option>
+      <option value="light">lightest regular first</option>
+      <option value="heavy">heaviest regular first</option>
+      <option value="con">highest contrast first</option>
+      <option value="xh">largest x-height first</option>
+      <option value="jump">biggest bold step first</option>
+      <option value="new">newest first</option>
+      <option value="az">A to Z</option>
+    </select>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="shelf" id="shelf"></div>
+  <div class="more"><button id="more" type="button">Show more</button></div>
+</section>
+
+<section class="wrap" id="method">
+  <div class="sechead"><h2>Method, and what this does not say</h2></div>
+  <p class="sublede" id="methlede"></p>
+  <h3 style="margin-top:28px">Three measures, kept apart on purpose</h3>
+  <p id="methcheck"></p>
+  <h3>What is not measured</h3>
+  <ul id="methlimits" style="max-width:76ch;font-size:14.5px;color:var(--ink2);padding-left:20px"></ul>
+  <h3>The letterforms in this page</h3>
+  <p id="methlic"></p>
+</section>
+
+<footer class="wrap">
+  <h3>Sources</h3>
+  <ul id="srcs"></ul>
+  <p id="footnote"></p>
+</footer>
+
+<datalist id="famlist"></datalist>
+
+<script>
+const PAYLOAD = "__PAYLOAD__";
+let D = null, F = null;
+
+/* ---------- small helpers ---------- */
+const $ = s => document.querySelector(s);
+const fmt = n => n.toLocaleString("en-US");
+const n1 = v => (v === null || v === undefined) ? "–" : (Math.round(v * 10) / 10).toFixed(1);
+const n0 = v => (v === null || v === undefined) ? "–" : String(Math.round(v));
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+const WNAME = {100:"Thin",200:"ExtraLight",300:"Light",400:"Regular",500:"Medium",
+               600:"SemiBold",700:"Bold",800:"ExtraBold",900:"Black",1000:"Ultra"};
+
+/* a face is a flat array; these read it by name */
+function face(i){ return D.faces[i]; }
+function fget(fi, w, key){
+  const idx = D.fams[fi].w[w];
+  return idx === undefined ? null : D.faces[idx][F[key]];
+}
+function faceIdx(fi, w){ const i = D.fams[fi].w[w]; return i === undefined ? null : i; }
+function weightsOf(fi){ return Object.keys(D.fams[fi].w).map(Number).sort((a,b)=>a-b); }
+function nearestWeight(fi, want){
+  const ws = weightsOf(fi);
+  if (!ws.length) return null;
+  return ws.reduce((a,b) => Math.abs(b-want) < Math.abs(a-want) ? b : a);
+}
+function catOf(fi){ return D.cats[D.fams[fi].c]; }
+
+/* every specimen uses the same viewBox so that real size differences survive */
+const VB = "-40 -800 1000 1040";
+function spec(pathIdx, which, cls){
+  const p = (which === "o" ? D.po : D.pn)[pathIdx] || "";
+  return `<svg class="g" viewBox="${VB}" preserveAspectRatio="xMinYMid meet" aria-hidden="true">`
+       + `<path class="ink ${cls||""}" d="${p}"/></svg>`;
+}
+
+/* ---------- boot ---------- */
+(async function(){
+  const bin = Uint8Array.from(atob(PAYLOAD), c => c.charCodeAt(0));
+  if (typeof DecompressionStream !== "function"){
+    document.body.insertAdjacentHTML("afterbegin",
+      "<p style='padding:1em'>This page needs a browser with DecompressionStream.</p>");
+    return;
+  }
+  const stream = new Blob([bin]).stream().pipeThrough(new DecompressionStream("gzip"));
+  D = JSON.parse(await new Response(stream).text());
+  F = {}; D.faceFields.forEach((k,i) => F[k] = i);
+  byName = new Map(D.fams.map((f,i) => [f.n, i]));
+  masthead(); datalists(); bench(); distributions(); swap(); jumps();
+  oneWeight(); buckets(); scatter(); years(); shelf(); method();
+})();
+
+let byName = null;
+
+/* ---------- masthead ---------- */
+function masthead(){
+  const S = D.stats;
+  $("#dek").innerHTML =
+    `<b>font-weight: 700</b> is a number in your stylesheet. It is not a quantity. Measured off the
+     outlines of all ${fmt(S.families)} type families on Google Fonts, the faces labelled
+     <b>Regular</b> run from a stroke of ${n0(S.spread400.min)} to ${n0(S.spread400.max)} units of a
+     1000-unit em, and the ones labelled <b>Bold</b> overlap them so far that if you pick a bold and
+     a regular from two different families, <b>one time in ${S.inv_all.oneIn} the bold is the
+     lighter of the two</b>.`;
+  $("#strip").innerHTML = [
+    [fmt(S.families), `families, ${fmt(S.faces)} upright faces, every one measured from its own outlines`],
+    [`${n0(S.spread400.min)}–${n0(S.spread400.max)}`, `what "Regular" weighs: the measured stroke of ${fmt(S.spread400.n)} faces numbered 400`],
+    [`1 in ${S.inv_all.oneIn}`, `cross-family pairs where the bold is lighter than the regular (1 in ${S.inv_text.oneIn} among text faces)`],
+    [fmt(S.oneWeight), `families ship a single weight. Ask them for bold and the browser invents one`],
+  ].map(([v,k]) => `<div><div class="v">${v}</div><div class="k">${k}</div></div>`).join("");
+}
+
+function datalists(){
+  $("#famlist").innerHTML = D.fams.map(f => `<option value="${esc(f.n)}">`).join("");
+  const cats = ["<option value=\"\">every category</option>"].concat(
+    D.cats.map(c => `<option value="${c}">${c} (${fmt(D.stats.cats[c])})</option>`));
+  $("#fcat").innerHTML = cats.join("");
+}
+
+/* ================= 1. the measuring bench ================= */
+let benchFam = null, benchW = null;
+
+function bench(){
+  benchFam = byName.get("Playfair Display");
+  benchW = 400;
+  $("#benchpick").addEventListener("input", e => {
+    const i = byName.get(e.target.value);
+    if (i !== undefined && weightsOf(i).length){ benchFam = i; benchW = nearestWeight(i, 400); drawBench(); }
+  });
+  drawBench();
+  const S = D.stats;
+  $("#benchnote").innerHTML =
+    `The thin stroke is taken as the smaller of the two horizontal bands, because a bowl is rarely
+     symmetrical top to bottom. Their ratio is the stroke contrast, which is how a Didone is told
+     from a grotesque without anyone having to look: the median serif family here measures
+     ${S.contrast.byCat["Serif"]}, the median sans-serif ${S.contrast.byCat["Sans Serif"]}.`;
+}
+
+function benchPick(i){
+  benchFam = i; benchW = nearestWeight(i, 400);
+  $("#benchpick").value = D.fams[i].n;
+  drawBench();
+  $("#bench-sec").scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+function drawBench(){
+  const f = D.fams[benchFam], fi = faceIdx(benchFam, benchW);
+  const v = D.faces[fi];
+  const G = k => v[F[k]];
+
+  /* the o, with the line it was measured on */
+  let o = `<path class="ink" d="${D.po[fi]||""}"/>`;
+  const og = G("ogeo"), ov = G("ovgeo");
+  if (og){
+    o += `<line class="scan" x1="-30" y1="${og[0]}" x2="786" y2="${og[0]}"/>`
+       + `<line class="span" x1="${og[1]}" y1="${og[0]}" x2="${og[2]}" y2="${og[0]}"/>`
+       + `<line class="span" x1="${og[3]}" y1="${og[0]}" x2="${og[4]}" y2="${og[0]}"/>`
+       + `<text class="glabel" x="-30" y="${og[0]-26}">${n0(G("othick"))}</text>`;
+  }
+  if (ov){
+    o += `<line class="scan" x1="${ov[0]}" y1="-820" x2="${ov[0]}" y2="140"/>`
+       + `<line class="span" x1="${ov[0]}" y1="${ov[1]}" x2="${ov[0]}" y2="${ov[2]}"/>`
+       + `<line class="span" x1="${ov[0]}" y1="${ov[3]}" x2="${ov[0]}" y2="${ov[4]}"/>`
+       + `<text class="glabel" x="${ov[0]+24}" y="${ov[1]-14}">${n0(G("othin"))}</text>`;
+  }
+  o += `<line class="base" x1="-50" y1="0" x2="786" y2="0"/>`;
+  $("#figo").innerHTML = o;
+
+  /* the n, with its stem, cap height and x-height */
+  let n = `<path class="ink" d="${D.pn[fi]||""}"/>`;
+  const ng = G("ngeo");
+  if (ng){
+    n += `<line class="scan" x1="-30" y1="${ng[0]}" x2="786" y2="${ng[0]}"/>`
+       + `<line class="span" x1="${ng[1]}" y1="${ng[0]}" x2="${ng[2]}" y2="${ng[0]}"/>`
+       + `<text class="glabel" x="-30" y="${ng[0]-26}">${n0(G("stem"))}</text>`;
+  }
+  if (G("xh")) n += `<line class="base" x1="-50" y1="${-G("xh")}" x2="786" y2="${-G("xh")}"/>`
+    + `<text class="gdim" x="786" y="${-G("xh")-16}" text-anchor="end">x ${n0(G("xh"))}</text>`;
+  if (G("cap")) n += `<line class="base" x1="-50" y1="${-G("cap")}" x2="786" y2="${-G("cap")}"/>`
+    + `<text class="gdim" x="786" y="${-G("cap")-16}" text-anchor="end">cap ${n0(G("cap"))}</text>`;
+  n += `<line class="base" x1="-50" y1="0" x2="786" y2="0"/>`;
+  $("#fign").innerHTML = n;
+
+  $("#benchname").textContent = f.n + " " + (WNAME[benchW] || benchW);
+  const lic = {ofl:"SIL Open Font Licence", apache:"Apache 2.0", ufl:"Ubuntu Font Licence"}[D.lics[f.l]];
+  $("#benchmeta").innerHTML = `${catOf(benchFam)} · ${f.d.map(i => esc(D.designers[i])).join(", ")}
+     · added ${f.y} · ${lic} · drawn on a ${fmt(G("upem"))}-unit em`;
+
+  $("#benchwts").innerHTML = weightsOf(benchFam).map(w =>
+    `<button type="button" aria-pressed="${w===benchW}" data-w="${w}">${w}</button>`).join("");
+  $("#benchwts").querySelectorAll("button").forEach(b =>
+    b.onclick = () => { benchW = +b.dataset.w; drawBench(); });
+
+  const con = (G("othick") && G("othin")) ? (G("othick")/G("othin")) : null;
+  const rows = [
+    ["stroke, thick (the o)", n1(G("othick")), true],
+    ["stroke, thin (the o)", n1(G("othin")), false],
+    ["contrast, thick over thin", con ? con.toFixed(2) : "–", false],
+    ["stem of the n", n1(G("stem")), false],
+    ["stem of the H", n1(G("capstem")), false],
+    ["cap height", n0(G("cap")), false],
+    ["x-height", n0(G("xh")), false],
+    ["x-height over cap", (G("xh")&&G("cap")) ? (G("xh")/G("cap")).toFixed(3) : "–", false],
+    ["counter of the o", n0(G("counter")), false],
+    ["advance of the n", n0(G("advn")), false],
+    ["ink in the n, as a share of its box", G("cov") ? G("cov").toFixed(3) : "–", false],
+  ];
+  $("#benchread").innerHTML = rows.map(([k,v,hi]) =>
+    `<div class="${hi?"hi":""}"><span class="rk">${k}</span><span class="rv">${v}</span></div>`).join("");
+}
+
+/* ================= 2. the two distributions ================= */
+function distributions(){
+  const S = D.stats;
+  $("#distlede").innerHTML =
+    `Above the line, every face numbered 400. Below it, every face numbered 700. The median regular
+     measures ${n1(S.spread400.med)} and the median bold ${n1(S.spread700.med)}, which sounds
+     orderly until you look at where the two distributions sit on top of each other. The shaded band
+     is the overlap: <b>${n1(S.spread700.p5)} to ${n1(S.spread400.p95)}</b> is a stroke weight you
+     can reach by asking for either. ${fmt(S.heavy400)} of the ${fmt(S.spread400.n)} regulars,
+     ${S.heavy400pct}% of them, are heavier than the median bold.`;
+
+  const W = 1000, H = 300, PAD = 36, MAX = 300, BIN = 5;
+  const x = v => PAD + (Math.min(v, MAX) / MAX) * (W - PAD - 14);
+  const mid = 168;
+  const binsOf = w => {
+    const b = new Array(Math.ceil(MAX / BIN) + 1).fill(0);
+    D.fams.forEach((f,i) => { const v = fget(i, w, "othick"); if (v) b[Math.min(Math.floor(v/BIN), b.length-1)]++; });
+    return b;
+  };
+  const br = binsOf(400), bb = binsOf(700);
+  const top = Math.max(...br), bot = Math.max(...bb);
+  const hr = 120, hb = 96;
+  let s = "";
+  /* the overlap band */
+  s += `<rect class="lap" x="${x(S.spread700.p5)}" y="12" width="${x(S.spread400.p95)-x(S.spread700.p5)}" height="${H-56}"/>`;
+  s += `<line class="lapline" x1="${x(S.spread700.p5)}" y1="12" x2="${x(S.spread700.p5)}" y2="${H-44}"/>`;
+  s += `<line class="lapline" x1="${x(S.spread400.p95)}" y1="12" x2="${x(S.spread400.p95)}" y2="${H-44}"/>`;
+  br.forEach((c,i) => { if(!c) return;
+    const h = c/top*hr; s += `<rect class="barr" x="${x(i*BIN)}" y="${mid-h}" width="${x(BIN)-x(0)-0.6}" height="${h}"/>`; });
+  bb.forEach((c,i) => { if(!c) return;
+    const h = c/bot*hb; s += `<rect class="barb" x="${x(i*BIN)}" y="${mid}" width="${x(BIN)-x(0)-0.6}" height="${h}"/>`; });
+  s += `<line class="axis" x1="${PAD-6}" y1="${mid}" x2="${W-10}" y2="${mid}"/>`;
+  for (let v = 0; v <= MAX; v += 50){
+    s += `<line class="axis" x1="${x(v)}" y1="${mid}" x2="${x(v)}" y2="${mid+4}"/>`
+       + `<text class="tick" x="${x(v)}" y="${H-22}" text-anchor="middle">${v}</text>`;
+  }
+  s += `<text class="tick" x="${W-10}" y="${H-4}" text-anchor="end">measured stroke, units per 1000 em. ${MAX}+ is in the last bar</text>`;
+  s += `<text class="lab" x="${PAD}" y="26" fill="var(--reg)">400, called Regular</text>`;
+  s += `<text class="lab" x="${PAD}" y="${H-44}" fill="var(--bold)">700, called Bold</text>`;
+  s += `<text class="lab" x="${(x(S.spread700.p5)+x(S.spread400.p95))/2}" y="${H-58}" fill="var(--mark)" text-anchor="middle">both</text>`;
+  $("#distsvg").innerHTML = s;
+
+  /* five anchors along the axis, each a real face */
+  const picks = [["Bungee Hairline",400],["Raleway",400],["Roboto",400],["Lato",700],["Ultra",400]];
+  $("#anchors").innerHTML = picks.map(([nm,w]) => {
+    const fi = byName.get(nm); if (fi === undefined) return "";
+    const ww = nearestWeight(fi, w), idx = faceIdx(fi, ww);
+    return `<div>${spec(idx,"n")}<div class="av">${n1(fget(fi,ww,"othick"))}</div>
+      <div class="an">${esc(nm)}</div><div class="aw">${WNAME[ww]||ww}</div></div>`;
+  }).join("");
+
+  $("#crosslede").innerHTML =
+    `There are ${fmt(S.textCrossingCount)} ordered pairs among the better-used text families alone
+     where the first family's bold is lighter than the second family's regular. These are the widest
+     of them. Both members of every pair here are serif, sans-serif or monospace faces inside the
+     400 most-used families, so none of this is a signwriting face being held up against body text.`;
+  $("#crosstab").querySelector("tbody").innerHTML = S.textCrossings.slice(0,10).map(r =>
+    `<tr><td>${esc(r[0])} <span style="color:var(--ink3)">Bold</span></td><td class="r">${n1(r[1])}</td>
+      <td>${esc(r[2])} <span style="color:var(--ink3)">Regular</span></td><td class="r mk">${n1(r[3])}</td></tr>`).join("");
+  /* how many regulars are heavier than the lightest thing called a bold */
+  const lb = S.light700[0][1];
+  const regs = D.fams.map((f,i) => fget(i,400,"othick")).filter(Boolean);
+  const over = regs.filter(v => v > lb).length;
+  $("#crossnote").innerHTML =
+    `The lightest thing in the catalogue called a bold is ${esc(S.light700[0][0])}, at
+     ${n1(lb)}. ${Math.round(100*over/regs.length)}% of the regulars are heavier than it. The
+     heaviest thing called a regular is ${esc(S.heavy400names[0][0])}, at
+     ${n1(S.heavy400names[0][1])}, which is heavier than every bold in the catalogue including
+     ${esc(S.spread700.maxName)}, the heaviest of those, at ${n1(S.spread700.max)}. Neither family
+     is doing anything wrong. 400 and 700 are the only numbers a single-weight family is given to
+     work with${(byName.has(S.heavy400names[0][0]) && D.fams[byName.get(S.heavy400names[0][0])].nl === 1)
+       ? `, and ${esc(S.heavy400names[0][0])} ships one weight` : ""}.`;
+}
+
+/* ================= 3. the swap ================= */
+let swA = null, swB = null, swW = 700;
+function swap(){
+  swA = byName.get("Lato"); swB = byName.get("Poppins"); swW = 700;
+  $("#swapa").value = D.fams[swA].n; $("#swapb").value = D.fams[swB].n;
+  $("#swapa").addEventListener("input", e => { const i = byName.get(e.target.value);
+    if (i !== undefined && weightsOf(i).length){ swA = i; drawSwap(); } });
+  $("#swapb").addEventListener("input", e => { const i = byName.get(e.target.value);
+    if (i !== undefined && weightsOf(i).length){ swB = i; drawSwap(); } });
+  drawSwap();
+}
+function drawSwap(){
+  const shared = weightsOf(swA).filter(w => weightsOf(swB).includes(w));
+  const ws = shared.length ? shared : [];
+  if (ws.length && !ws.includes(swW)) swW = ws.reduce((a,b)=>Math.abs(b-700)<Math.abs(a-700)?b:a);
+  $("#swapwts").innerHTML = ws.length
+    ? ws.map(w => `<button type="button" aria-pressed="${w===swW}" data-w="${w}">${w}</button>`).join("")
+    : `<span style="font-size:12px;color:var(--ink3)">no weight in common</span>`;
+  $("#swapwts").querySelectorAll("button").forEach(b =>
+    b.onclick = () => { swW = +b.dataset.w; drawSwap(); });
+
+  const side = (fi, w, el, cls) => {
+    const used = weightsOf(fi).includes(w) ? w : nearestWeight(fi, w);
+    const idx = faceIdx(fi, used), v = fget(fi, used, "othick");
+    $(el).innerHTML = spec(idx, "n", cls)
+      + `<div class="fname">${esc(D.fams[fi].n)}</div>
+         <div class="fmeta">${WNAME[used]||used}${used!==w?` (nearest it has to ${w})`:""}
+         · ${catOf(fi)} · stroke <b class="mono">${n1(v)}</b>
+         · x-height ${n0(fget(fi,used,"xh"))} · advance ${n0(fget(fi,used,"advn"))}</div>`;
+    return v;
+  };
+  const a = side(swA, swW, "#swapA", "reg"), b = side(swB, swW, "#swapB", "");
+  if (!a || !b){ $("#swapv").textContent = "One of these cannot be measured on the o."; return; }
+  const d = (b - a) / a * 100, dir = d >= 0 ? "heavier" : "lighter";
+  const xa = fget(swA, weightsOf(swA).includes(swW)?swW:nearestWeight(swA,swW), "xh");
+  const xb = fget(swB, weightsOf(swB).includes(swW)?swW:nearestWeight(swB,swW), "xh");
+  $("#swapv").innerHTML =
+    `<span class="big">${Math.abs(d) < 1.5 ? "Almost exactly the same weight"
+       : `${Math.abs(d).toFixed(0)}% ${dir}`}</span>
+     Swapping ${esc(D.fams[swA].n)} for ${esc(D.fams[swB].n)} at <span class="mono">font-weight:
+     ${swW}</span> moves the stroke from <b class="mono">${n1(a)}</b> to <b class="mono">${n1(b)}</b>,
+     and the x-height from ${n0(xa)} to ${n0(xb)}. Nothing in the stylesheet changed but the name.`;
+}
+
+/* ================= 4. the size of a bold step ================= */
+function jumps(){
+  const S = D.stats, J = S.jump;
+  const flat = J.small.filter(s => s[1] <= 1.001);
+  $("#jumplede").innerHTML =
+    `Of the ${fmt(J.n)} families that publish both a 400 and a 700, the median one makes its bold
+     <b>${J.med} times</b> the stroke of its regular. ${flat.length
+       ? `${flat.length} add nothing whatever (${flat.map(s => esc(s[0])).join(" and ")}: the Latin
+          letters measure identically at both numbers). ` : ""}Past those, the quietest step belongs
+     to ${esc(J.small[flat.length][0])} at ${Math.round((J.small[flat.length][1]-1)*100)}% and the
+     loudest to ${esc(J.maxName)}, which multiplies by ${J.max}. So "make it bold" is not one
+     instruction. Applied to a page that mixes two families, it is two different instructions
+     wearing the same name.`;
+
+  const W = 1000, H = 220, PAD = 36, LO = 1, HI = 2.6, BIN = 0.05;
+  const x = v => PAD + (Math.min(Math.max(v,LO),HI) - LO)/(HI-LO) * (W-PAD-14);
+  const bins = new Array(Math.ceil((HI-LO)/BIN)+1).fill(0);
+  D.fams.forEach((f,i) => {
+    const r = fget(i,400,"othick"), b = fget(i,700,"othick");
+    if (r && b) bins[Math.min(Math.floor((b/r-LO)/BIN), bins.length-1)]++;
+  });
+  const top = Math.max(...bins);
+  let s = "";
+  bins.forEach((c,i) => { if(!c) return;
+    const h = c/top*(H-80);
+    s += `<rect class="barb" x="${x(LO+i*BIN)}" y="${H-54-h}" width="${x(LO+BIN)-x(LO)-0.8}" height="${h}"/>`; });
+  s += `<line class="axis" x1="${PAD-6}" y1="${H-54}" x2="${W-10}" y2="${H-54}"/>`;
+  for (let v = 1; v <= 2.6001; v += 0.2){
+    s += `<line class="axis" x1="${x(v)}" y1="${H-54}" x2="${x(v)}" y2="${H-50}"/>`
+       + `<text class="tick" x="${x(v)}" y="${H-36}" text-anchor="middle">${v.toFixed(1)}×</text>`;
+  }
+  s += `<line class="lapline" x1="${x(J.med)}" y1="28" x2="${x(J.med)}" y2="${H-54}"/>`
+     + `<text class="lab" x="${x(J.med)+6}" y="40" fill="var(--mark)">median ${J.med}×</text>`
+     + `<text class="tick" x="${W-10}" y="${H-14}" text-anchor="end">stroke at 700 divided by stroke at 400. 2.6+ is in the last bar</text>`;
+  $("#jumpsvg").innerHTML = s;
+
+  $("#poptab").querySelector("tbody").innerHTML = S.popular.map(r =>
+    `<tr><td>${esc(r[0])}</td><td style="color:var(--ink2)">${r[1]}</td><td class="r">${r[2]}</td>
+      <td class="r">${n1(r[3])}</td><td class="r">${r[4]===null?"–":n1(r[4])}</td>
+      <td class="r ${r[5]&&r[5]>=2?"mk":""}">${r[5]===null?"–":r[5].toFixed(2)+"×"}</td></tr>`).join("");
+  const pr = S.popular.filter(r => r[3]).map(r => r[3]);
+  const pb = S.popular.filter(r => r[4]).map(r => r[4]);
+  const dbl = S.popular.filter(r => r[5] && r[5] >= 2);
+  const loB = S.popular.find(r => r[4] === Math.min(...pb));
+  const hiB = S.popular.find(r => r[4] === Math.max(...pb));
+  $("#popnote").innerHTML =
+    `The ${S.popular.length} most-used families in the catalogue, measured. Among these alone,
+     "Regular" spans ${n1(Math.min(...pr))} (${esc(S.popular.find(r=>r[3]===Math.min(...pr))[0])}) to
+     ${n1(Math.max(...pr))} (${esc(S.popular.find(r=>r[3]===Math.max(...pr))[0])}, a display face
+     with one weight) and "Bold" spans
+     ${n1(Math.min(...pb))} (${esc(loB[0])}) to ${n1(Math.max(...pb))} (${esc(hiB[0])}), which is
+     ${Math.round((Math.max(...pb)/Math.min(...pb)-1)*100)}% apart for the same declaration.
+     ${dbl.length} of them (${dbl.map(r => esc(r[0])).join(", ")}) reach their bold by more than
+     doubling the stroke, so a page that swaps one of those for one of the restrained ones changes
+     much more than its shapes.`;
+}
+
+/* ================= 5. one weight only ================= */
+function oneWeight(){
+  const S = D.stats;
+  $("#onelede").innerHTML =
+    `${fmt(S.oneWeight)} of the ${fmt(S.families)} families, ${S.oneWeightPct}% of the catalogue,
+     ship exactly one upright weight. ${fmt(S.oneWeightIs400)} of those call it 400, whatever it
+     weighs, and ${S.oneWeightVariable === 0 ? "not one of them has a weight axis to interpolate along"
+       : `only ${S.oneWeightVariable} have a weight axis`}. ${S.oneWeightHeavy}% of those lone
+     regulars are heavier than the median bold. The share depends entirely on what the family is
+     for: a display face is a poster, and a poster has one voice.`;
+  const cats = Object.keys(S.oneWeightByCat).sort((a,b) => S.oneWeightCatShare[b]-S.oneWeightCatShare[a]);
+  $("#onebars").innerHTML = cats.map(c => {
+    const pc = S.oneWeightCatShare[c];
+    return `<div class="barrow"><span>${c}</span>
+      <span class="track"><span class="fill ${pc>60?"alt":""}" style="width:${pc}%"></span></span>
+      <span class="bv">${pc}%</span></div>`;
+  }).join("");
+
+  /* a designed bold against an inflated one, matched on measured stroke */
+  const fi = byName.get("Source Serif 4") !== undefined ? byName.get("Source Serif 4") : byName.get("Roboto");
+  const r = fget(fi,400,"othick"), b = fget(fi,700,"othick");
+  const rad = (b - r) / 2;                       /* stroke outward by this and the stems match */
+  const i400 = faceIdx(fi,400), i700 = faceIdx(fi,700);
+  const xr = fget(fi,400,"xh"), xb = fget(fi,700,"xh");
+  const cr = fget(fi,400,"counter"), cb = fget(fi,700,"counter");
+  const ar = fget(fi,400,"advn"), ab = fget(fi,700,"advn");
+  const or_ = fget(fi,400,"owidth"), ob_ = fget(fi,700,"owidth");
+  $("#fauxlede").innerHTML =
+    `A designed bold is a new drawing. A synthesised one is the regular inflated until it looks
+     heavy enough, which is what a browser falls back to when the family it was handed has no bold
+     to load. Below is ${esc(D.fams[fi].n)}: its real Regular, that same outline pushed outward by
+     ${n1(rad)} units so that its stems measure exactly what the real Bold measures, and the real
+     Bold the designer drew. The middle one is now the right weight and wrong in every other way.`;
+  const box = (h, body, d) =>
+    `<div><div class="fh">${h}</div><svg class="g" viewBox="-40 -800 800 1040"
+       preserveAspectRatio="xMidYMid meet" aria-hidden="true">${body}</svg><div class="fd">${d}</div></div>`;
+  $("#faux").innerHTML =
+      box("Regular, as drawn", `<path class="ink" d="${D.pn[i400]}"/>`,
+          `stroke ${n1(r)}, x-height ${n0(xr)}, counter ${n0(cr)}, advance ${n0(ar)}.`)
+    + box("Regular, inflated to match",
+          `<path class="faux1" d="${D.pn[i400]}" style="stroke-width:${rad*2}"/>`
+          + `<path class="ink" d="${D.pn[i400]}"/>`,
+          `stroke ${n1(b)} by construction, and wrong in everything else. The x-height has grown to
+           about ${n0(xr+rad)}, ${Math.round(rad/xr*100)}% taller than the regular text it sits
+           beside, so the type appears to change size. The counter has closed only to about
+           ${n0(cr-2*rad)}. And the advance is still ${n0(ar)}, because inflating an outline does
+           not buy it any more room, so every letter now crowds its neighbour.`)
+    + box("Bold, as drawn", `<path class="ghost" d="${D.pn[i400]}"/><path class="ink" d="${D.pn[i700]}"/>`,
+          `stroke ${n1(b)}, x-height ${n0(xb)}, counter ${n0(cb)}, advance ${n0(ab)}. The designer
+           did the opposite on all three: held the x-height almost still (${n0(xr)} to ${n0(xb)}),
+           closed the counter further than inflation would (${n0(cb)}, not ${n0(cr-2*rad)}), and
+           widened the letter to pay for it, the o going from ${n0(or_)} to ${n0(ob_)} units and the
+           advance from ${n0(ar)} to ${n0(ab)}. The regular is behind it in grey.`);
+  $("#fauxnote").innerHTML =
+    `Browsers do not all synthesise the same way, and none of them publishes the amount. The middle
+     panel is the arithmetic of the simplest method, an outward stroke, sized here to land on the
+     real bold's measured weight so the comparison is about shape rather than darkness. What it
+     demonstrates is not a browser bug but the consequence of asking for something that was never
+     drawn: ${fmt(S.oneWeight)} families on this shelf have no bold to give you.`;
+}
+
+/* ================= 6. the catalogue's own label ================= */
+function buckets(){
+  const S = D.stats;
+  const hairline = S.buckets.find(b => b.loName === S.spread400.minName);
+  $("#bklede").innerHTML =
+    `Google already sorts each family into a thickness bucket from 1 to 10, which is what the
+     sliders on its own site filter by. Against the measured stroke of the same families it
+     correlates at <b>r = ${S.bucketCorr}</b> over ${fmt(S.bucketN)} families, so it is broadly
+     right and locally useless: the black mark is each bucket's median, the bar its full range, and
+     ${S.bucketOverlaps} pairs of buckets overlap.`;
+  const MAX = 500;
+  $("#bk").innerHTML = S.buckets.map(b => {
+    const l = v => (v/MAX*100).toFixed(2);
+    const out = (hairline && b.t === hairline.t);
+    return `<div class="bkrow"><span class="bt">bucket ${b.t} · ${fmt(b.n)}</span>
+      <span class="line">
+        <span class="rng" style="left:${l(b.lo)}%;width:${l(b.hi-b.lo)}%"></span>
+        <span class="med" style="left:${l(b.med)}%"></span>
+        ${out ? `<span class="ol" style="left:${l(b.lo)}%" title="${esc(b.loName)}"></span>` : ""}
+      </span></div>`;
+  }).join("");
+  $("#bkmax").textContent = MAX;
+  const b7 = hairline;
+  $("#bknote").innerHTML = b7
+    ? `The red dot is ${esc(b7.loName)}, filed in bucket ${b7.t} alongside ${esc(b7.hiName)}. It
+       measures ${n1(b7.lo)}; ${esc(b7.hiName)} measures ${n1(b7.hi)}, ${Math.round(b7.hi/b7.lo)}
+       times as much. ${esc(b7.loName)} is the lightest 400 in the entire catalogue and the
+       catalogue has it in the heavy half of its own scale. A bucket is a bucket, and nothing here
+       is measured.`
+    : `A bucket is a bucket, and nothing in it is measured.`;
+}
+
+/* ================= 7. the other axes ================= */
+function scatter(){
+  const S = D.stats;
+  $("#scatlede").innerHTML =
+    `Stroke weight is only the loudest of the things a typeface decides. Across the axis is the
+     measured stroke of each family's 400; up the side, on a log scale, is its contrast, the thick
+     stroke over the thin. A grotesque keeps those nearly equal; a Didone opens the gap as far as it
+     can bear. The two clouds separate on their own, without anyone labelling them: the median
+     serif here measures ${S.contrast.byCat["Serif"]} against ${S.contrast.byCat["Sans Serif"]} for
+     sans-serifs, and the sharpest of all, ${esc(S.contrast.maxName)}, reaches
+     ${S.contrast.max}. Hover a point.`;
+  const W = 1000, H = 480, L = 52, R = 14, T = 16, B = 44;
+  const XMAX = 320, YLO = 0.9, YHI = 14;
+  const x = v => L + Math.min(v, XMAX)/XMAX*(W-L-R);
+  const y = v => T + (1 - (Math.log(Math.min(Math.max(v,YLO),YHI))-Math.log(YLO))/(Math.log(YHI)-Math.log(YLO)))*(H-T-B);
+  const COL = ["#2f6f9f","#b3792b","#7a3f8f","#3f8f5f","#8f3f4f"];
+  let pts = [], s = "";
+  D.fams.forEach((f,i) => {
+    const th = fget(i,400,"othick"), tn = fget(i,400,"othin");
+    if (!th || !tn) return;
+    pts.push([x(th), y(th/tn), i, th, th/tn]);
+  });
+  for (let v = 0; v <= XMAX; v += 40)
+    s += `<line class="ax" x1="${x(v)}" y1="${H-B}" x2="${x(v)}" y2="${H-B+4}"/>`
+       + `<text class="axl" x="${x(v)}" y="${H-B+18}" text-anchor="middle">${v}</text>`;
+  [1,1.5,2,3,5,8,13].forEach(v =>
+    s += `<line class="ax" x1="${L-4}" y1="${y(v)}" x2="${W-R}" y2="${y(v)}" stroke-dasharray="2 4"/>`
+       + `<text class="axl" x="${L-8}" y="${y(v)+3}" text-anchor="end">${v}</text>`);
+  s += `<line class="ax" x1="${L}" y1="${T}" x2="${L}" y2="${H-B}"/>`
+     + `<line class="ax" x1="${L}" y1="${H-B}" x2="${W-R}" y2="${H-B}"/>`
+     + `<text class="axl" x="${W-R}" y="${H-6}" text-anchor="end">measured stroke, units per 1000 em</text>`
+     + `<text class="axl" x="${L+6}" y="${T+2}">contrast, thick stroke over thin</text>`;
+  s += pts.map(p => `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="3.1"
+      fill="${COL[D.fams[p[2]].c]}" data-i="${p[2]}"/>`).join("");
+  $("#scatsvg").innerHTML = s;
+  $("#scatleg").innerHTML = D.cats.map((c,i) =>
+    `<span><span class="dot" style="background:${COL[i]}"></span>${c}</span>`).join("")
+    + `<span style="color:var(--ink3)">${fmt(pts.length)} families with a measurable bowl</span>`;
+
+  const tip = $("#scattip"), svg = $("#scatsvg");
+  svg.addEventListener("pointermove", e => {
+    const t = e.target;
+    if (t.tagName !== "circle"){ tip.style.opacity = 0; return; }
+    const i = +t.dataset.i, f = D.fams[i];
+    const th = fget(i,400,"othick"), tn = fget(i,400,"othin");
+    tip.innerHTML = `${esc(f.n)} · ${n1(th)} / ${n1(tn)} = ${(th/tn).toFixed(2)}`;
+    const r = $("#scat").getBoundingClientRect();
+    tip.style.left = Math.min(e.clientX - r.left + 12, r.width - 230) + "px";
+    tip.style.top = (e.clientY - r.top - 30) + "px";
+    tip.style.opacity = 1;
+  });
+  svg.addEventListener("pointerleave", () => tip.style.opacity = 0);
+  svg.addEventListener("click", e => {
+    if (e.target.tagName === "circle") benchPick(+e.target.dataset.i);
+  });
+  $("#scatnote").innerHTML =
+    `x-height is the third decision and the one that does most to the feel of a paragraph. The
+     median family here sets its x-height at ${S.xheight.med} of its cap height; sans-serifs run
+     ${S.xheight.byCat["Sans Serif"]}, serifs ${S.xheight.byCat["Serif"]} and handwriting faces
+     ${S.xheight.byCat["Handwriting"]}, which is most of why a script face set at the same point
+     size looks so much smaller. ${esc(S.xheight.maxName)} draws its x-height
+     ${S.xheight.max > 1 ? "taller than its own capitals" : "almost as tall as its capitals"}.`;
+}
+
+/* ================= 8. by year ================= */
+function years(){
+  const S = D.stats, Y = S.byYear.filter(r => r[1] >= 20);
+  $("#yearlede").innerHTML =
+    `The catalogue grew from ${S.byYear[0][0]} to ${S.dateTo.slice(0,4)} and the taste did not
+     visibly move with it. Median stroke at 400, by the year a family was added, stays between
+     ${n1(S.yearStrokeRange[0])} and ${n1(S.yearStrokeRange[1])}; the median x-height ratio stays
+     between ${S.yearXhRange[0]} and ${S.yearXhRange[1]}. Whatever a decade of web typography did,
+     it did not make the default heavier or the lowercase taller.`;
+  const W = 1000, H = 240, L = 46, R = 46, T = 20, B = 40;
+  const xs = Y.map((r,i) => L + i/(Y.length-1)*(W-L-R));
+  const sy = v => T + (1 - (v-70)/(100-70))*(H-T-B);
+  const xy = v => T + (1 - (v-0.66)/(0.78-0.66))*(H-T-B);
+  const [slo, shi] = S.yearStrokeRange;
+  let s = `<rect class="band" x="${L}" y="${sy(shi)}" width="${W-L-R}" height="${sy(slo)-sy(shi)}"/>`;
+  s += `<path class="ln" d="${Y.map((r,i)=>`${i?"L":"M"}${xs[i].toFixed(1)} ${sy(r[2]).toFixed(1)}`).join("")}"/>`;
+  s += `<path class="ln2" d="${Y.map((r,i)=>`${i?"L":"M"}${xs[i].toFixed(1)} ${xy(r[3]).toFixed(1)}`).join("")}"/>`;
+  [70,80,90,100].forEach(v => s += `<text class="tick" x="${L-8}" y="${sy(v)+3}" text-anchor="end">${v}</text>`);
+  [0.68,0.72,0.76].forEach(v => s += `<text class="tick" x="${W-R+8}" y="${xy(v)+3}" fill="var(--mark)">${v}</text>`);
+  Y.forEach((r,i) => { if (i % 2 === 0 || i === Y.length-1)
+    s += `<text class="tick" x="${xs[i]}" y="${H-18}" text-anchor="middle">${String(r[0]).slice(2)}</text>`; });
+  s += `<line class="axis" x1="${L}" y1="${H-B}" x2="${W-R}" y2="${H-B}"/>`
+     + `<text class="lab" x="${L+6}" y="${T+14}" fill="var(--ink)">median stroke at 400</text>`
+     + `<text class="lab" x="${W-R-6}" y="${H-B-8}" fill="var(--mark)" text-anchor="end">median x-height over cap</text>`;
+  $("#yearsvg").innerHTML = s;
+  $("#yearnote").innerHTML =
+    `Years with fewer than 20 measurable families are left off the line; the grey band is the full
+     range the stroke median moved in. The jumps that are there belong to what was added in bulk
+     that year rather than to anything designers changed: ${fmt(S.noto)} of these families are
+     Noto, one commission with one brief, and they arrived in waves.`;
+}
+
+/* ================= 9. the shelf ================= */
+let view = [], shown = 0;
+const PAGE = 48;
+function shelf(){
+  ["#q","#fcat","#fw","#sort"].forEach(s => $(s).addEventListener("input", refilter));
+  $("#more").onclick = () => { shown += PAGE; paint(); };
+  refilter();
+}
+function refilter(){
+  const q = $("#q").value.trim().toLowerCase();
+  const cat = $("#fcat").value, fw = $("#fw").value, sort = $("#sort").value;
+  view = D.fams.map((f,i) => i).filter(i => {
+    const f = D.fams[i];
+    if (cat && catOf(i) !== cat) return false;
+    if (fw === "1" && f.nl !== 1) return false;
+    if (fw === "m" && f.nl < 2) return false;
+    if (fw === "v" && !f.ax) return false;
+    if (q){
+      const hay = (f.n + " " + f.d.map(j => D.designers[j]).join(" ")).toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+  const key = {
+    pop: i => D.fams[i].p,
+    light: i => fget(i,400,"othick") || 1e9,
+    heavy: i => -(fget(i,400,"othick") || -1e9),
+    con: i => { const a = fget(i,400,"othick"), b = fget(i,400,"othin"); return b ? -(a/b) : 1e9; },
+    xh: i => { const a = fget(i,400,"xh"), b = fget(i,400,"cap"); return b ? -(a/b) : 1e9; },
+    jump: i => { const a = fget(i,400,"othick"), b = fget(i,700,"othick"); return (a&&b) ? -(b/a) : 1e9; },
+    new: i => -(+D.fams[i].y.replace(/-/g,"")),
+    az: i => D.fams[i].n.toLowerCase(),
+  }[sort];
+  view.sort((a,b) => { const ka = key(a), kb = key(b); return ka < kb ? -1 : ka > kb ? 1 : 0; });
+  shown = PAGE;
+  paint();
+}
+function paint(){
+  const slice = view.slice(0, shown);
+  $("#count").textContent =
+    `${fmt(view.length)} families, showing ${fmt(slice.length)}`;
+  $("#shelf").innerHTML = slice.map(card).join("");
+  $("#shelf").querySelectorAll("button.pick").forEach(b =>
+    b.onclick = () => benchPick(+b.dataset.i));
+  $("#more").style.display = shown >= view.length ? "none" : "";
+}
+function card(i){
+  const f = D.fams[i], ws = weightsOf(i);
+  const lic = {ofl:"OFL", apache:"Apache 2.0", ufl:"UFL"}[D.lics[f.l]];
+  const show = ws.length > 7 ? ws.filter((w,k) => k % 2 === 0 || w === 400 || w === 700) : ws;
+  const ramp = show.map(w => {
+    const idx = faceIdx(i,w), v = fget(i,w,"othick");
+    return `<div>${spec(idx,"n", w < 500 ? "reg" : "")}
+      <div class="rv">${v ? n0(v) : "–"}</div><div class="rw">${w}</div></div>`;
+  }).join("");
+  return `<div class="card">
+    <div class="cn">${esc(f.n)}</div>
+    <div class="cm">${catOf(i)} · ${f.d.map(j=>esc(D.designers[j])).join(", ")}
+      · ${f.y.slice(0,4)} · ${lic}${f.ax?` · weight axis ${f.ax[0]}–${f.ax[1]}`:""}</div>
+    <div class="ramp">${ramp || "<div class='rw'>nothing measurable</div>"}</div>
+    ${f.nl === 1 ? `<div class="one">one weight only</div>` : ""}
+    <button class="pick" type="button" data-i="${i}">Measure it</button>
+  </div>`;
+}
+
+/* ================= 10. method ================= */
+function method(){
+  const S = D.stats;
+  $("#methlede").innerHTML =
+    `The catalogue listing was read from Google Fonts' own metadata endpoint:
+     ${fmt(S.families)} families, ${fmt(S.designers)} designers, added between ${S.dateFrom} and
+     ${S.dateTo}, every one of them free software (${fmt(S.lics.ofl)} under the SIL Open Font
+     Licence, ${fmt(S.lics.apache)} under Apache 2.0, ${fmt(S.lics.ufl)} under the Ubuntu Font
+     Licence). Each upright face was then fetched as a subset font containing only the eleven
+     letters needed here, which is about 9 kB apiece instead of 120, and measured with fontTools.
+     ${fmt(S.faces)} faces came back measurable. ${S.unfetched} faces could not be fetched at all,
+     ${S.unfetchedOver900} of them because they are numbered above 900 and the CSS API stops there,
+     and ${S.skipped} more had no Latin o, n or x to measure. Italics were left out: the question
+     here is weight.`;
+  $("#methcheck").innerHTML =
+    `The headline rests on the stroke of the o. Two other measures were taken independently and
+     never averaged in, so that they could be used to check it. Over ${fmt(S.checkN)} faces the
+     stem of the H correlates with it at <b>r = ${S.checkCapstem}</b> and runs
+     ${S.checkRatio} times as wide, which is about what a stem should be against a curve; the ink
+     area of the n correlates at r = ${S.checkCov}. That agreement is what caught the one real
+     error in this build. The stem of the n, measured by scanline, reported that Cinzel and Alegreya
+     Sans SC each had a bold lighter than their own semibold. Both are caps-only designs whose
+     lowercase n is a small-cap N, and the scanline was landing on its diagonal. On the o and the H
+     both families are monotonic throughout. Of the ${fmt(S.rampFamilies)} families with three or
+     more measurable weights, <b>${S.reversals} reverse</b> anywhere; the only irregularity left is
+     ${S.dupFamilies.length} families with steps that add nothing at all
+     (${S.dupFamilies.map(esc).join(", ")}), confirmed on both measures.`;
+  $("#methlimits").innerHTML = [
+    `A stroke is measured on the o, at the mid-height of its own bowl. In a small-caps family that
+     is the small-cap O, which carries the design weight correctly, but in a stencil, inline or
+     dot-matrix face the scanline can cross more than two bands and the measure is simply refused
+     rather than guessed.`,
+    `This is geometry, not rendering. Hinting, antialiasing, gamma, the size you set it at and the
+     screen you set it on all change how heavy a face looks, and none of them is here.`,
+    `Optical size is not accounted for. A family with an opsz axis is measured at its default, which
+     is drawn to be read at one particular size.`,
+    `A variable family is measured at the static instances Google serves for the weights it lists,
+     not continuously along its axis.`,
+    `"Regular" and "Bold" are read as the numbers 400 and 700 because that is what a stylesheet
+     sends. A designer who calls their one weight 400 is following the only convention available,
+     not making a claim.`,
+    `Nothing here says a heavy face is a badly made face. The point is only that the number is a
+     label on a drawing, and labels from different drawings do not compare.`,
+  ].map(s => `<li>${s}</li>`).join("");
+  $("#methlic").innerHTML =
+    `The letters drawn on this page are real outlines, two glyphs per face, extracted from the font
+     files and re-expressed as SVG paths on a 1000-unit em. They are not a font and cannot be
+     installed as one, but they are derived from the families they name, so each is credited to its
+     designer and its licence throughout: ${fmt(S.lics.ofl)} OFL, ${fmt(S.lics.apache)} Apache 2.0,
+     ${fmt(S.lics.ufl)} Ubuntu Font Licence, all three of which permit this with attribution. The
+     licence text for every family is in its own directory at
+     <a href="https://github.com/google/fonts">github.com/google/fonts</a>. Nothing is fetched while
+     you read, except the visit count in the bar above: all ${fmt(S.faces)} faces' measurements and
+     ${fmt(S.faces * 2)} outlines are already in this file.`;
+  $("#srcs").innerHTML = [
+    [`Google Fonts catalogue metadata (<span class="mono">fonts.google.com/metadata/fonts</span>)`,
+     `${fmt(S.families)} families with designers, category, date added, popularity rank, subsets,
+      axes and Google's own thickness and width buckets. Read ${D.generated}.`],
+    [`Google Fonts CSS API (<span class="mono">fonts.googleapis.com/css2</span>)`,
+     `${fmt(S.faces)} upright faces, each requested with <span class="mono">text=Hamburgenox</span>
+      so gstatic returns a subset font of only the letters measured here.`],
+    [`<a href="https://github.com/google/fonts">github.com/google/fonts</a>`,
+     `which of the three licence directories each family is filed under.`],
+    [`<a href="https://fonttools.readthedocs.io">fontTools</a>`,
+     `used to read the outlines. Everything measured from them is this project's own: the scanline
+      code is in <span class="mono">src/glyphmetrics.py</span>.`],
+  ].map(([a,b]) => `<li><b>${a}</b> – ${b}</li>`).join("");
+  $("#footnote").innerHTML =
+    `Built ${D.generated}. This page is set in Space Grotesk and IBM Plex Mono, both of which are in
+     the data: Space Grotesk's bold measures ${n1(S.selfSet["Space Grotesk"]["700"])} and IBM Plex
+     Mono's ${n1(S.selfSet["IBM Plex Mono"]["700"])}, against a catalogue median bold of
+     ${n1(S.spread700.med)}. The headings you have been reading are, by the measure this whole page
+     is about, on the light side of ordinary.`;
+}
+</script>
+</body>
+</html>
