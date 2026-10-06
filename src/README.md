@@ -4,8 +4,8 @@ The pipeline. Four steps, each resumable, each safe to re-run.
 
 ```bash
 pip install fonttools
-python fetch.py      # catalogue + licence map + ~6,000 subset font files -> ../raw  (~4 min, 46 MB)
-python measure.py    # outlines -> ../raw/measured.json                             (~4 min)
+python fetch.py      # catalogue + licence map + ~6,000 subset font files -> src/raw  (~4 min, 46 MB)
+python measure.py    # outlines -> raw/measured.json                             (~4 min)
 python build.py      # -> payload.json, plus every figure the page prints
 python inject.py     # -> ../index.html, then the two catalog tools
 ```
@@ -19,7 +19,7 @@ python inject.py     # -> ../index.html, then the two catalog tools
 | `inject.py` | Gzips and base64s the payload into `template.html`, writes `../index.html`, then re-runs `wrap_for_pages.py` and `add_catalog_link.py`. |
 | `template.html` | The page, with `__PAYLOAD__` where the payload goes. |
 
-`../raw/` is gitignored. It holds the catalogue JSON, the licence listings, 46 MB of subset font
+`src/raw/` is gitignored. It holds the catalogue JSON, the licence listings, 46 MB of subset font
 files, and `measured.json`. All of it refetches or recomputes.
 
 Two things in here are load-bearing and easy to get wrong on a rewrite; both are explained at

@@ -235,12 +235,12 @@ not to the geometry, or the reverse.
 ```bash
 pip install fonttools
 cd projects/bold-claim/src
-python fetch.py      # catalogue + licences + 6,000 subset faces into ../raw   (~4 min, 46 MB, resumable)
-python measure.py    # outlines -> ../raw/measured.json                        (~4 min)
+python fetch.py      # catalogue + licences + 6,000 subset faces into src/raw   (~4 min, 46 MB, resumable)
+python measure.py    # outlines -> raw/measured.json                        (~4 min)
 python build.py      # -> payload.json, and every figure the page prints
 python inject.py     # -> ../index.html, then wrap_for_pages.py + add_catalog_link.py
 ```
 
-`../raw/` is gitignored; every step there refetches or recomputes. `inject.py` ends by running the
+`src/raw/` is gitignored; every step there refetches or recomputes. `inject.py` ends by running the
 two catalog tools, so regenerating the page never silently drops the doctype wrapper or the
 breadcrumb bar.
